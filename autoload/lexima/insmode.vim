@@ -83,7 +83,7 @@ function! lexima#insmode#add_rules(rule) abort
   " definition when an error occur.
   if newchar_flg
     if a:rule.char == '<CR>' && g:lexima_accept_pum_with_enter
-      execute printf("inoremap <expr><silent> %s pumvisible() ? \"\\<C-y>\" : lexima#expand(%s, 'i')",
+      execute printf("inoremap <expr><silent> %s coc#pum#visible() ? coc#pum#confirm() : lexima#expand(%s, 'i')",
                     \ a:rule.char,
                     \ string(lexima#string#to_mappable(a:rule.char))
                     \ )
